@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<canciones>
+    <cancion id="4">
+        <titol>Black Waters</titol>
+        <album>un album</album>
+        <artista>un artista muy bueno</artista>
+        <any>2000</any>
+    </cancion>
+    <cancion id="6">
+        <titol>dawdaw</titol>
+        <album>allkja</album>
+        <artista>nnlojoi</artista>
+        <any>1203123</any>
+    </cancion>
+</canciones>

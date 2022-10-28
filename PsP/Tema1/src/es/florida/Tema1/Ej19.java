@@ -2,7 +2,7 @@ package es.florida.Tema1;
 
 public class Ej19 {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		char[] codeAscii = {  
 				'!',
 				'"',
@@ -224,7 +224,7 @@ public class Ej19 {
 				'³',
 				'²',
 				'■',
-		}
-	}
+		}*/
+	
 
 }

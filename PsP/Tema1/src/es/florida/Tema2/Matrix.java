@@ -13,6 +13,10 @@ public class Matrix {
 		velocidadNEO = v;
 	}
 	
+	public Matrix () {
+		
+	}
+	
 	public String getNombreNeo() {
 		return nombreNeo;
 	}
@@ -51,7 +55,7 @@ public class Matrix {
 	}
 
 	
-	public double calcColision() {
+	public double calcColision(Matrix m) {
 		double posicionTierra = 1;
 		double velocidadTierra = 100;
 		for (int i = 0; i < (50 * 365 * 24 * 60 * 60); i++) {

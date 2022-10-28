@@ -5,5 +5,5 @@
  * @author hesalu
  *
  */
-module Tema1 {
+module PsP {
 }
