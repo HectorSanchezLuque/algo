@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Ej1Sec3 {
+public class Ej1Tema2Sec1 {
 	public static Canciones addSong() {
 		Canciones c = new Canciones();
 		Scanner s = new Scanner(System.in);
@@ -102,15 +103,11 @@ public class Ej1Sec3 {
 		List<Canciones> lista = new ArrayList<>();
 		boolean pregunta = true;
 		try {
-
-			Class.forName("com.mysql.cj.jdbc.Driver"); 
-			Connection con = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3306/canciones","root",""); 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/canciones", "root", "");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM cancion");
-			
-			
-			
+
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document document = dBuilder.parse(new File("canciones.xml"));
@@ -137,6 +134,15 @@ public class Ej1Sec3 {
 					System.out.println("Año : " + eElement.getElementsByTagName("year").item(0).getTextContent());
 
 					Canciones c = new Canciones(id, t, alb, art, year);
+
+					PreparedStatement psInsertar = con.prepareStatement("INSERT INTO cancion (titulo,album,autor,year) VALUES (?,?,?,?)");
+					psInsertar.setString(1, c.getTitle());
+					psInsertar.setString(2, c.getAlbum());
+					psInsertar.setString(3, c.getAuthor());
+					psInsertar.setInt(4, c.getYear());
+
+					int resultadoInsertar = psInsertar.executeUpdate();
+
 					lista.add(c);
 
 				}

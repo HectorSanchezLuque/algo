@@ -5,8 +5,7 @@
  * @author hesalu
  *
  */
-module T1F {
+module Tema_2SQL {
 	requires java.xml;
-	requires java.desktop;
 	requires java.sql;
 }

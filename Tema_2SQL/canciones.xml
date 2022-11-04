@@ -1,0 +1,27 @@
+<Tracklist>
+
+	<Song>
+		<id>1</id>
+		<title>Disposable Heroes</title>
+		<album>Master of Puppets</album>
+		<author>MetallicA</author>
+		<year>1986</year>
+	</Song>
+
+	<Song>
+		<id>2</id>
+		<title>Dearly Beloved</title>
+		<album>Kingdom Hearts II</album>
+		<author>Yoko Shinomura</author>
+		<year>2004</year>
+	</Song>
+	
+	<Song>
+		<id>3</id>
+		<title>Don't Cry</title>
+		<album>Use Illusion I</album>
+		<author>Guns 'N' Roses</author>
+		<year>1991</year>
+	</Song>
+
+</Tracklist>
