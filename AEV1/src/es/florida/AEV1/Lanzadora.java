@@ -12,7 +12,11 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Lanzadora extends JFrame {
@@ -95,21 +99,31 @@ public class Lanzadora extends JFrame {
 		JButton btnComenzar = new JButton("Croquetear");
 		btnComenzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int total[] = { (int) spnCroquetasJamon.getValue(), (int) spnCroquetasPollo.getValue(),
-						(int) spnCroquetasBacalao.getValue(), (int) spnCroquetasQueso.getValue() };
-				Procesadora op;
-				for (int i = 0; i < total.length; i++) {
-					int num = total[i];
-					for (int j = 0; j < num; j++) {
-						op = new Procesadora(i);
-						Thread hilo = new Thread(op);
-						hilo.start();
-					}
+				String clase = "es.florida.AEV1.Procesadora";
+				String javaHome = System.getProperty("java.home");
+				String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
+				String classpath = System.getProperty("java.class.path");
+				String className = clase;
+				List<String> command = new ArrayList<>();
+				command.add(javaBin);
+				command.add("-cp");
+				command.add(classpath);
+				command.add(className);
+				command.add(Integer.toString((int)spnCroquetasJamon.getValue()));
+				command.add(Integer.toString((int)spnCroquetasPollo.getValue()));
+				command.add(Integer.toString((int)spnCroquetasBacalao.getValue()));
+				command.add(Integer.toString((int)spnCroquetasQueso.getValue()));
+				ProcessBuilder builder = new ProcessBuilder(command);
+				try {
+					Process p = builder.start();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			};
 		});
 		btnComenzar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnComenzar.setBounds(181, 211, 131, 32);
+		btnComenzar.setBounds(181, 211, 159, 32);
 		contentPane.add(btnComenzar);
 	}
 }
