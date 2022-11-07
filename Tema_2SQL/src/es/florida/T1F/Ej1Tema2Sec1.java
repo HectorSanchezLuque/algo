@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Ej1Tema2Sec1 {
-	public static Canciones addSong() {
+	public static Canciones addSong() throws SQLException {
 		Canciones c = new Canciones();
 		Scanner s = new Scanner(System.in);
 		String r;
@@ -48,6 +49,16 @@ public class Ej1Tema2Sec1 {
 		r = s.nextLine();
 		c.setYear(Integer.parseInt(r));
 
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/canciones", "root", "");
+		Statement stmt = con.createStatement();
+		PreparedStatement psInsertar = con.prepareStatement("INSERT INTO cancion (titulo,album,autor,year) VALUES (?,?,?,?)");
+		psInsertar.setString(1, c.getTitle());
+		psInsertar.setString(2, c.getAlbum());
+		psInsertar.setString(3, c.getAuthor());
+		psInsertar.setInt(4, c.getYear());
+
+		int resultadoInsertar = psInsertar.executeUpdate();
+		
 		return c;
 	}
 
@@ -97,7 +108,7 @@ public class Ej1Tema2Sec1 {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Scanner sc = new Scanner(System.in);
 		String r;
 		List<Canciones> lista = new ArrayList<>();

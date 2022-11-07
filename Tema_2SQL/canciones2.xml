@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <canciones>
-    <cancion id="7">
-        <titol>Nightmare</titol>
-        <album>Walking the Fallen</album>
-        <artista>Avenged Sevenfold</artista>
-        <any>2007</any>
+    <cancion id="1">
+        <titol>Radioactive</titol>
+        <album>Imagine Dragons</album>
+        <artista>Imagine Dragons</artista>
+        <any>2015</any>
+    </cancion>
+    <cancion id="2">
+        <titol>Highway To Hell</titol>
+        <album>Highway To Hell</album>
+        <artista>Ac/Dc</artista>
+        <any>1979</any>
     </cancion>
 </canciones>
