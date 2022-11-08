@@ -58,16 +58,36 @@ public class Ej9 {
 
 	}
 
-	private static void crearFichero() {
+	private static void crearFichero(File f) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Indica nombre carpta: ");
+		String nameC = sc.nextLine();
 
+		File carp = new File(f.getAbsolutePath() + "/" + nameC);
+
+		if (carp.mkdir()) {
+
+			System.out.println("Carpeta creada");
+
+		} else {
+			System.out.println("La ruta no es un directorio");
+		}
+		return carp;
 	}
 
-	private static void eliminar() {
-
+	private static void eliminar(File f) {
+		f.delete();
 	}
 
-	private static void renombrar() {
-
+	private static void renombrar(File f) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Indica nombre nuevo");
+		String newName = sc.nextLine();
+		
+		File newDir = new File(f.getParent() + "/" + newName);
+		
+		f.renameTo(newDir);
+		System.out.println("Archivo renombrado");
 	}
 
 	public static void main(String[] args) {
@@ -91,19 +111,19 @@ public class Ej9 {
 				break;
 			}
 			case "3": {
-				crearFichero();
+				crearFichero(f);
 				sc.nextLine();
 				sc.close();
 				break;
 			}
 			case "4": {
-				eliminar();
+				eliminar(f);
 				sc.nextLine();
 				sc.close();
 				break;
 			}
 			case "5": {
-				renombrar();
+				renombrar(f);
 				sc.nextLine();
 				sc.close();
 				break;
